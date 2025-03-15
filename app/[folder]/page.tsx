@@ -6,7 +6,6 @@ async function fetchGitHubImages(folder: string) {
     try {
         const res = await fetch(repoUrl, {
             headers: {Accept: 'application/vnd.github.v3+json'},
-            next: {revalidate: 3600},
         });
 
         if (!res.ok) throw new Error('Failed to fetch images');
@@ -20,8 +19,9 @@ async function fetchGitHubImages(folder: string) {
     }
 }
 
-export default async function Folder({params}: {params: {folder: string}}) {
-    const [first, second] = await fetchGitHubImages(params.folder);
+export default async function Folder({params}: {params: Promise<{folder: string}>}) {
+    const {folder} = await params;
+    const [first, second] = await fetchGitHubImages(folder);
 
     return (
         <div className="flex h-screen flex-col p-2">

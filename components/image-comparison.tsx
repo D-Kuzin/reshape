@@ -23,7 +23,6 @@ export const ImageComparison = ({
     after,
     scale,
 }: ImageComparisonProps) => {
-    console.log(scale);
     switch (mode) {
         default:
         case 'Single':

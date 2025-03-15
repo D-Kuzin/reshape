@@ -3,9 +3,7 @@ import SidebarSimple from './icons/sidebar-simple';
 import {LinkItem} from './link-item';
 
 async function getFolders() {
-    const response = await fetch(BUCKET_URL, {
-        cache: 'no-store', // Ensures fresh data on each request
-    });
+    const response = await fetch(BUCKET_URL, {});
 
     if (!response.ok) {
         throw new Error('Failed to fetch folders from GitHub');
