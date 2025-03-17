@@ -7,8 +7,8 @@ import Swap from './icons/swap';
 import {ImageComparison} from './image-comparison';
 import {ViewSelect} from './view-select';
 import {Zoom} from './zoom';
-import Plus from './icons/plus';
 import {Select} from './select';
+import Light from './icons/light';
 
 export const modes = ['Single', 'Blend', 'Split'];
 
@@ -31,16 +31,19 @@ export const Controls = ({first, second}: ControlsProps) => {
     const [scale, setScale] = useState(1.0);
 
     return (
-        <div className="relative flex-1">
-            <ImageComparison
-                scale={scale}
-                swapped={isSwapped}
-                mode={mode}
-                perspective={perspective}
-                before={first}
-                after={second}
-            />
-
+        <div className="relative h-full w-full">
+            <div
+                className="flex h-full w-full items-center justify-around"
+                style={{transform: `scale(${scale})`}}
+            >
+                <ImageComparison
+                    swapped={isSwapped}
+                    mode={mode}
+                    perspective={perspective}
+                    before={first}
+                    after={second}
+                />
+            </div>
             <ViewSelect
                 className="absolute top-2 left-2"
                 value={mode}
@@ -52,8 +55,12 @@ export const Controls = ({first, second}: ControlsProps) => {
                     onChange={event => setPerspective(event.target.value)}
                     className="absolute top-2 right-2"
                     options={[
-                        {value: first.name, label: first.name, icon: <Plus />},
-                        {value: second.name, label: second.name, icon: <Plus />},
+                        {value: first.name, label: 'Top light', icon: <Light />},
+                        {
+                            value: second.name,
+                            label: 'Bottom light',
+                            icon: <Light className="rotate-180" />,
+                        },
                     ]}
                 />
             ) : (

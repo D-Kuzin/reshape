@@ -12,17 +12,22 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export const Select = ({options, className, ...props}: SelectProps) => {
+    const Icon: ReactNode = options.find(option => option.value === props.value)?.icon;
     return (
-        <select
+        <div
             className={cn(
-                'bg-surface hover:bg-accent flex h-8 cursor-pointer flex-row items-center gap-2 rounded-lg border border-white/15 px-3 py-1 text-sm font-medium text-white drop-shadow-lg active:opacity-50',
+                'bg-surface hover:bg-accent flex h-8 cursor-pointer flex-row items-center gap-1 space-x-2 rounded-lg border border-white/15 fill-white px-3 py-1 text-sm font-medium text-white drop-shadow-lg active:opacity-50',
                 className,
             )}
-            {...props}
         >
-            {options.map(option => (
-                <option key={option.value}>{option.label}</option>
-            ))}
-        </select>
+            {Icon}
+            <select className="cursor-pointer" {...props}>
+                {options.map(option => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
+        </div>
     );
 };

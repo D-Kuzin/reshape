@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
-
 import {GitHubResource, Mode} from './controls';
+import SplitMode from './image-split';
+
 interface ImageComparisonProps {
     /** Current view mode */
     mode: Mode;
@@ -12,7 +12,6 @@ interface ImageComparisonProps {
     after: GitHubResource;
     perspective: string;
     swapped: boolean;
-    scale: number;
 }
 
 export const ImageComparison = ({
@@ -21,47 +20,38 @@ export const ImageComparison = ({
     mode,
     before,
     after,
-    scale,
 }: ImageComparisonProps) => {
     switch (mode) {
         default:
         case 'Single':
             return (
-                <div
-                    className={`h-full flex-1 transition-transform`}
-                    style={{transform: `scale(${scale})`}}
-                >
-                    <Image
-                        className="rounded-4xl"
-                        src={perspective === after.name ? after.download_url : before.download_url}
-                        alt=""
-                        fill
-                        style={{objectFit: 'contain'}}
-                    />
-                </div>
+                <img
+                    className="max-h-full max-w-full rounded-md object-contain"
+                    src={perspective === after.name ? after.download_url : before.download_url}
+                    alt=""
+                />
             );
         case 'Blend':
             return (
-                <div
-                    className="h-full flex-1 transition-transform"
-                    style={{transform: `scale(${scale})`}}
-                >
-                    <Image
+                <>
+                    <img
                         src={swapped ? before.download_url : after.download_url}
                         alt="before"
-                        fill
-                        style={{objectFit: 'contain'}}
+                        className="max-h-full max-w-full rounded-md object-contain"
                     />
-                    <Image
-                        className="opacity-70"
+                    <img
+                        className="absolute max-h-full max-w-full rounded-md object-contain opacity-70"
                         src={swapped ? after.download_url : before.download_url}
                         alt="after"
-                        fill
-                        style={{objectFit: 'contain'}}
                     />
-                </div>
+                </>
             );
         case 'Split':
-            return <div className="text-9xl text-white">To be done</div>;
+            return (
+                <SplitMode
+                    before={swapped ? before.download_url : after.download_url}
+                    after={swapped ? after.download_url : before.download_url}
+                />
+            );
     }
 };

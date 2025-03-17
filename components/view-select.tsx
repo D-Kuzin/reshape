@@ -1,14 +1,28 @@
 'use client';
 
-import {modes} from './controls';
-import Plus from './icons/plus';
-import {Select, SelectProps} from './select';
+import Blend from './icons/blend';
+import ImageSquare from './icons/image-square';
+import Split from './icons/split';
+import {Option, Select, SelectProps} from './select';
 
 export const ViewSelect = ({...props}: Omit<SelectProps, 'options'>) => {
-    return (
-        <Select
-            {...props}
-            options={modes.map(mode => ({label: mode, value: mode, icon: <Plus />}))}
-        />
-    );
+    const options: Option[] = [
+        {
+            label: 'Single',
+            value: 'Single',
+            icon: <ImageSquare />,
+        },
+        {
+            label: 'Blend',
+            value: 'Blend',
+            icon: <Blend />,
+        },
+        {
+            label: 'Split',
+            value: 'Split',
+            icon: <Split />,
+        },
+    ];
+
+    return <Select {...props} options={options} />;
 };

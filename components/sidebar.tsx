@@ -3,7 +3,7 @@ import SidebarSimple from './icons/sidebar-simple';
 import {LinkItem} from './link-item';
 
 async function getFolders() {
-    const response = await fetch(BUCKET_URL, {});
+    const response = await fetch(BUCKET_URL, {next: {revalidate: 3600}});
 
     if (!response.ok) {
         throw new Error('Failed to fetch folders from GitHub');
@@ -24,7 +24,7 @@ export default async function Sidebar() {
         console.error(error);
     }
     return (
-        <aside className="bg-surface h-screen w-64 divide-y divide-white/8">
+        <aside className="bg-surface hidden h-screen w-64 divide-y divide-white/8 md:inline">
             <div className="flex flex-row items-center justify-between px-3 py-2">
                 <p className="text-sm font-semibold text-white">Library</p>
                 <button className="flex h-8 w-8 cursor-pointer flex-row items-center justify-center rounded-full bg-white/5 hover:bg-white/15">
