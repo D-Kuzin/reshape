@@ -2,13 +2,12 @@
 
 import {useState} from 'react';
 
-import {Button} from './button';
-import Swap from './icons/swap';
-import {ImageComparison} from './image-comparison';
-import {ViewSelect} from './view-select';
+import {Button} from '@/ui/button';
+import Swap from '@/icons/swap';
+import {ImageComparison} from '@/components/image-comparison';
+import {LightControls} from './light-controls';
+import {ViewControls} from './view-select';
 import {Zoom} from './zoom';
-import {Select} from './select';
-import Light from './icons/light';
 
 export const modes = ['Single', 'Blend', 'Split'];
 
@@ -26,7 +25,7 @@ interface ControlsProps {
 
 export const Controls = ({first, second}: ControlsProps) => {
     const [mode, setMode] = useState<Mode>('Single');
-    const [perspective, setPerspective] = useState(first.name);
+    const [perspective, setPerspective] = useState(second.name);
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
 
@@ -44,24 +43,17 @@ export const Controls = ({first, second}: ControlsProps) => {
                     after={second}
                 />
             </div>
-            <ViewSelect
+            <ViewControls
                 className="absolute top-2 left-2"
                 value={mode}
                 onChange={event => setMode(event.target.value)}
             />
             {mode === 'Single' ? (
-                <Select
+                <LightControls
+                    firstName={first.name}
+                    secondName={second.name}
                     value={perspective}
                     onChange={event => setPerspective(event.target.value)}
-                    className="absolute top-2 right-2"
-                    options={[
-                        {value: first.name, label: 'Top light', icon: <Light />},
-                        {
-                            value: second.name,
-                            label: 'Bottom light',
-                            icon: <Light className="rotate-180" />,
-                        },
-                    ]}
                 />
             ) : (
                 <Button onClick={() => setIsSwapped(!isSwapped)} className="absolute top-2 right-2">

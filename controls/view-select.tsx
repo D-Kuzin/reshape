@@ -1,11 +1,11 @@
 'use client';
 
-import Blend from './icons/blend';
-import ImageSquare from './icons/image-square';
-import Split from './icons/split';
-import {Option, Select, SelectProps} from './select';
+import Blend from '@/icons/blend';
+import ImageSquare from '@/icons/image-square';
+import Split from '@/icons/split';
+import {Option, Select, SelectProps} from '@/ui/select';
 
-export const ViewSelect = ({...props}: Omit<SelectProps, 'options'>) => {
+export const ViewControls = ({...props}: Omit<SelectProps, 'options'>) => {
     const options: Option[] = [
         {
             label: 'Single',

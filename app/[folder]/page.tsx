@@ -1,4 +1,4 @@
-import {Controls} from '@/components/controls';
+import {Controls} from '@/controls/controls';
 import {BUCKET_URL} from '@/const';
 
 async function fetchGitHubImages(folder: string) {

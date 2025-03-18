@@ -1,6 +1,6 @@
 'use client';
 
-import {GitHubResource, Mode} from './controls';
+import {GitHubResource, Mode} from '@/controls/controls';
 import SplitMode from './image-split';
 
 interface ImageComparisonProps {

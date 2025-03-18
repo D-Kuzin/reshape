@@ -1,6 +1,7 @@
 'use client';
-import Minus from './icons/minus';
-import Plus from './icons/plus';
+
+import Minus from '@/icons/minus';
+import Plus from '@/icons/plus';
 
 interface ZoomProps {
     onZoomIn: () => void;

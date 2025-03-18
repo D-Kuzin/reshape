@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import ImageSquare from './icons/image-square';
 import {cn} from '@/utils';
+import ImageSquare from '../icons/image-square';
 
 export const LinkItem = ({folder}: {folder: {name: string; slug: string}}) => {
     const pathname = usePathname();
