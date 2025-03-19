@@ -1,3 +1,4 @@
+import {ImageName} from '@/const';
 import Light from '@/icons/light';
 import {Select, SelectProps} from '@/ui/select';
 
@@ -14,12 +15,12 @@ export const LightControls = ({firstName, secondName, ...props}: LightControlsPr
             options={[
                 {
                     value: secondName,
-                    label: secondName === 'top.jpeg' ? 'Top light' : 'Fluorescence',
+                    label: ImageName[secondName],
                     icon: <Light />,
                 },
                 {
                     value: firstName,
-                    label: 'Bottom light',
+                    label: ImageName[firstName],
                     icon: <Light className="rotate-180" />,
                 },
             ]}

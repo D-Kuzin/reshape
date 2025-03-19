@@ -4,3 +4,8 @@ export type Folder = {
 };
 
 export type Library = Folder[];
+
+export type GitHubResource = {
+    name: string;
+    download_url: string;
+};

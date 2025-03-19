@@ -8,15 +8,12 @@ import {ImageComparison} from '@/components/image-comparison';
 import {LightControls} from './light-controls';
 import {ViewControls} from './view-select';
 import {Zoom} from './zoom';
+import {GitHubResource} from '@/types';
+import {BlendControl} from './blend-control';
 
 export const modes = ['Single', 'Blend', 'Split'];
 
 export type Mode = (typeof modes)[number];
-
-export type GitHubResource = {
-    name: string;
-    download_url: string;
-};
 
 interface ControlsProps {
     first: GitHubResource;
@@ -25,6 +22,7 @@ interface ControlsProps {
 
 export const Controls = ({first, second}: ControlsProps) => {
     const [mode, setMode] = useState<Mode>('Single');
+    const [blend, setBlend] = useState<Mode>('70');
     const [perspective, setPerspective] = useState(second.name);
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
@@ -43,7 +41,10 @@ export const Controls = ({first, second}: ControlsProps) => {
                     after={second}
                 />
             </div>
-            <ViewControls className="absolute top-2 left-2" value={mode} onChange={setMode} />
+            <div className="absolute top-2 left-2">
+                <BlendControl value={blend} onChange={setBlend} />
+                <ViewControls value={mode} onChange={setMode} />
+            </div>
             {mode === 'Single' ? (
                 <LightControls
                     firstName={first.name}
@@ -60,6 +61,7 @@ export const Controls = ({first, second}: ControlsProps) => {
                     Swap order
                 </Button>
             )}
+
             <Zoom onZoomIn={() => setScale(scale + 0.1)} onZoomOut={() => setScale(scale - 0.1)} />
         </div>
     );

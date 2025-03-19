@@ -47,11 +47,6 @@ export const ImageComparison = ({
                 </>
             );
         case 'Split':
-            return (
-                <SplitMode
-                    before={swapped ? before.download_url : after.download_url}
-                    after={swapped ? after.download_url : before.download_url}
-                />
-            );
+            return <SplitMode left={swapped ? before : after} right={swapped ? after : before} />;
     }
 };

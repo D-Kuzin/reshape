@@ -5,7 +5,7 @@ import {ReactNode, useEffect, useRef, useState} from 'react';
 export type Option = {
     value: string;
     label: string;
-    icon: ReactNode;
+    icon?: ReactNode;
 };
 
 export interface SelectProps {
@@ -55,7 +55,7 @@ export const Select = ({value, options, onChange, className}: SelectProps) => {
                 <ChevronDown className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
             {isOpen && (
-                <ul className="bg-surface absolute z-10 mt-1 min-w-full overflow-hidden rounded-lg border border-white/15 fill-white text-sm font-medium text-white drop-shadow-lg">
+                <ul className="bg-surface absolute z-10 mt-1 min-w-full overflow-hidden rounded-lg border border-white/15 fill-white/80 text-sm font-medium text-white drop-shadow-lg">
                     {options.map(option => (
                         <li
                             key={option.value}
