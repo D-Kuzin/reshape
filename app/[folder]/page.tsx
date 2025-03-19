@@ -3,6 +3,7 @@ import {BUCKET_URL} from '@/const';
 
 async function fetchGitHubImages(folder: string) {
     const repoUrl = `${BUCKET_URL}/${folder}`;
+
     try {
         const res = await fetch(repoUrl, {
             headers: {Accept: 'application/vnd.github.v3+json'},

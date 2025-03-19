@@ -2,11 +2,16 @@
 
 import {cn} from '@/utils';
 import {PropsWithChildren, useState} from 'react';
+import {Sidebar} from './sidebar';
 import {Button} from '@/ui/button';
 import SidebarSimple from '@/icons/sidebar-simple';
-import {Sidebar} from './sidebar';
+import {Library} from '@/types';
 
-export const SidebarLayout = ({children}: PropsWithChildren) => {
+interface SidebarLayoutProps extends PropsWithChildren {
+    library: Library;
+}
+
+export const SidebarLayout = ({library, children}: SidebarLayoutProps) => {
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -20,17 +25,17 @@ export const SidebarLayout = ({children}: PropsWithChildren) => {
                 )}
             >
                 <div className="h-screen w-screen" onClick={() => setOpen(false)}>
-                    <Sidebar closeSidebar={() => setOpen(false)} />
+                    <Sidebar library={library} closeSidebar={() => setOpen(false)} />
                 </div>
             </div>
             <div className="hidden md:inline">
-                <Sidebar />
+                <Sidebar library={library} />
             </div>
             <main className="h-screen flex-1">
                 {children}
                 <Button
                     onClick={() => setOpen(true)}
-                    className="absolute bottom-4 left-4 inline md:hidden"
+                    className="absolute bottom-4 left-4 inline fill-white md:hidden"
                 >
                     <SidebarSimple />
                 </Button>

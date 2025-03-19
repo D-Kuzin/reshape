@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {cn} from '@/utils';
-import ImageSquare from '../icons/image-square';
+import ImageSquare from '@/icons/image-square';
 
 export const LinkItem = ({folder}: {folder: {name: string; slug: string}}) => {
     const pathname = usePathname();
