@@ -29,8 +29,6 @@ export const Controls = ({first, second}: ControlsProps) => {
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
 
-    console.log(mode, perspective, isSwapped, scale);
-
     return (
         <div className="relative h-full w-full">
             <div

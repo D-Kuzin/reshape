@@ -9,7 +9,7 @@ interface SidebarProps {
 
 export const Sidebar = ({library, closeSidebar}: SidebarProps) => {
     return (
-        <aside className="bg-surface h-screen w-64 divide-y divide-white/8">
+        <aside className="bg-surface flex h-screen w-60 flex-col divide-y divide-white/8">
             <div className="flex flex-row items-center justify-between px-3 py-2">
                 <p className="text-sm font-semibold text-white">Library</p>
                 <button
@@ -19,7 +19,7 @@ export const Sidebar = ({library, closeSidebar}: SidebarProps) => {
                     <SidebarSimple />
                 </button>
             </div>
-            <div className="flex flex-col gap-1 px-4 pt-4 pb-6">
+            <div className="flex flex-1 flex-col gap-1 overflow-scroll px-4 pt-4 pb-6">
                 {library.map(folder => (
                     <LinkItem folder={folder} key={folder.slug} />
                 ))}
