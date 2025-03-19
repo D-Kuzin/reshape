@@ -16,7 +16,7 @@ export default function SplitMode({before, after}: SplitModeProps) {
         const x = e.clientX - bounds.left;
 
         const percentage = (x / bounds.width) * 100;
-        setDividerX(Math.max(0, Math.min(100, percentage))); // Clamp between 0-100
+        setDividerX(Math.max(0, Math.min(100, percentage)));
     };
 
     return (

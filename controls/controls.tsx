@@ -29,6 +29,8 @@ export const Controls = ({first, second}: ControlsProps) => {
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
 
+    console.log(mode, perspective, isSwapped, scale);
+
     return (
         <div className="relative h-full w-full">
             <div
@@ -43,20 +45,19 @@ export const Controls = ({first, second}: ControlsProps) => {
                     after={second}
                 />
             </div>
-            <ViewControls
-                className="absolute top-2 left-2"
-                value={mode}
-                onChange={event => setMode(event.target.value)}
-            />
+            <ViewControls className="absolute top-2 left-2" value={mode} onChange={setMode} />
             {mode === 'Single' ? (
                 <LightControls
                     firstName={first.name}
                     secondName={second.name}
                     value={perspective}
-                    onChange={event => setPerspective(event.target.value)}
+                    onChange={setPerspective}
                 />
             ) : (
-                <Button onClick={() => setIsSwapped(!isSwapped)} className="absolute top-2 right-2">
+                <Button
+                    onClick={() => setIsSwapped(!isSwapped)}
+                    className="absolute top-2 right-2 fill-white text-white"
+                >
                     <Swap />
                     Swap order
                 </Button>

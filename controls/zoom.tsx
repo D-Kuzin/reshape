@@ -10,17 +10,16 @@ interface ZoomProps {
 
 export const Zoom = ({onZoomIn, onZoomOut}: ZoomProps) => {
     return (
-        <div className="bg-surface absolute right-2 bottom-2 flex flex-col gap-1 rounded-lg border border-white/15 p-1 drop-shadow-lg">
+        <div className="bg-surface absolute right-2 bottom-2 flex flex-col overflow-hidden rounded-lg border border-white/15 fill-white drop-shadow-lg">
             <button
                 onClick={() => onZoomIn()}
-                className="bg-surface cursor-pointer p-2 hover:opacity-50"
+                className="bg-surface hover:bg-accent cursor-pointer p-3 active:opacity-50"
             >
                 <Plus />
             </button>
-
             <button
                 onClick={() => onZoomOut()}
-                className="bg-surface cursor-pointer p-2 hover:opacity-50"
+                className="bg-surface hover:bg-accent cursor-pointer p-3 active:opacity-50"
             >
                 <Minus />
             </button>

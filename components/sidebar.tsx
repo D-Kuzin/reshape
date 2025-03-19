@@ -12,12 +12,11 @@ export const Sidebar = ({closeSidebar}: SidebarProps) => {
                 <p className="text-sm font-semibold text-white">Library</p>
                 <button
                     onClick={closeSidebar}
-                    className="flex h-8 w-8 cursor-pointer flex-row items-center justify-center rounded-full bg-white/5 hover:bg-white/15 md:hidden"
+                    className="flex h-8 w-8 cursor-pointer flex-row items-center justify-center rounded-full bg-white/5 fill-white hover:bg-white/15 md:hidden"
                 >
                     <SidebarSimple />
                 </button>
             </div>
-            <FolderList />
         </aside>
     );
 };
