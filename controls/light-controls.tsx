@@ -1,12 +1,14 @@
-import {ImageName} from '@/const';
-import Light from '@/icons/light';
 import {Select, SelectProps} from '@/ui/select';
+import {getImageProperties} from '@/utils';
 
 interface LightControlsProps extends Omit<SelectProps, 'options'> {
+    /** Name of first image resource */
     firstName: string;
+    /** Name of second image resource */
     secondName: string;
 }
 
+/** Allow the selection of which light (e.g. image) to view at a time in Single mode */
 export const LightControls = ({firstName, secondName, ...props}: LightControlsProps) => {
     return (
         <Select
@@ -15,13 +17,11 @@ export const LightControls = ({firstName, secondName, ...props}: LightControlsPr
             options={[
                 {
                     value: secondName,
-                    label: ImageName[secondName],
-                    icon: <Light />,
+                    ...getImageProperties(secondName),
                 },
                 {
                     value: firstName,
-                    label: ImageName[firstName],
-                    icon: <Light className="rotate-180" />,
+                    ...getImageProperties(firstName),
                 },
             ]}
         />

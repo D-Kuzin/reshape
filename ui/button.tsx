@@ -1,6 +1,7 @@
 import {cn} from '@/utils';
 import {ButtonHTMLAttributes} from 'react';
 
+/** Generic styled button */
 export const Button = ({className, ...props}: ButtonHTMLAttributes<HTMLButtonElement>) => {
     return (
         <button

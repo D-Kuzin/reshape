@@ -8,9 +8,11 @@ import SidebarSimple from '@/icons/sidebar-simple';
 import {Library} from '@/types';
 
 interface SidebarLayoutProps extends PropsWithChildren {
+    /** Resource library */
     library: Library;
 }
 
+/** Sidebar layout that support fixed and overlayed version depending on screen size */
 export const SidebarLayout = ({library, children}: SidebarLayoutProps) => {
     const [open, setOpen] = useState(false);
     return (

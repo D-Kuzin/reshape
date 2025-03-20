@@ -5,6 +5,7 @@ import {usePathname} from 'next/navigation';
 import {cn} from '@/utils';
 import ImageSquare from '@/icons/image-square';
 
+/** Folder link item component */
 export const LinkItem = ({folder}: {folder: {name: string; slug: string}}) => {
     const pathname = usePathname();
 

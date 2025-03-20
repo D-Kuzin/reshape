@@ -2,11 +2,15 @@ import {cn} from '@/utils';
 import {ReactNode} from 'react';
 
 interface TagProps {
+    /** Icon to be shown on left */
     icon: ReactNode;
+    /** Text to be shown  */
     label: string;
+    /** Custom styling */
     className?: string;
 }
 
+/** Tag component, currently used in Split mode to identify which image is which */
 export const Tag = ({label, icon, className}: TagProps) => {
     return (
         <div

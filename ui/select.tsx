@@ -1,20 +1,20 @@
 import ChevronDown from '@/icons/chevron';
 import {cn} from '@/utils';
-import {ReactNode, useEffect, useRef, useState} from 'react';
-
-export type Option = {
-    value: string;
-    label: string;
-    icon?: ReactNode;
-};
+import {useEffect, useRef, useState} from 'react';
+import {Option} from '@/types';
 
 export interface SelectProps {
+    /** Custom styling */
     className?: string;
+    /** Option list */
     options: Option[];
+    /** On change, returns the selected value */
     onChange: (value: string) => void;
+    /** Current selected value */
     value: string;
 }
 
+/** Select component with styling */
 export const Select = ({value, options, onChange, className}: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -38,6 +38,7 @@ export const Select = ({value, options, onChange, className}: SelectProps) => {
                 setIsOpen(false);
             }
         };
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);

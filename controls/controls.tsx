@@ -2,26 +2,24 @@
 
 import {useState} from 'react';
 
-import {Button} from '@/ui/button';
+import {ImageViewer} from '@/components/image-viewer';
+import {MODES} from '@/const';
 import Swap from '@/icons/swap';
-import {ImageComparison} from '@/components/image-comparison';
+import {GitHubResource, Mode} from '@/types';
+import {Button} from '@/ui/button';
 import {LightControls} from './light-controls';
 import {ViewControls} from './view-select';
 import {Zoom} from './zoom';
-import {GitHubResource} from '@/types';
-import {BlendControl} from './blend-control';
-
-export const modes = ['Single', 'Blend', 'Split'];
-
-export type Mode = (typeof modes)[number];
 
 interface ControlsProps {
+    /** First image resource */
     first: GitHubResource;
+    /** Second image resource */
     second: GitHubResource;
 }
 
 export const Controls = ({first, second}: ControlsProps) => {
-    const [mode, setMode] = useState<Mode>('Single');
+    const [mode, setMode] = useState<Mode>(MODES[0]);
     const [blend, setBlend] = useState<Mode>('70');
     const [perspective, setPerspective] = useState(second.name);
     const [isSwapped, setIsSwapped] = useState(false);
@@ -33,19 +31,16 @@ export const Controls = ({first, second}: ControlsProps) => {
                 className="flex h-full w-full items-center justify-around"
                 style={{transform: `scale(${scale})`}}
             >
-                <ImageComparison
+                <ImageViewer
                     swapped={isSwapped}
                     mode={mode}
                     perspective={perspective}
-                    before={first}
-                    after={second}
+                    first={first}
+                    second={second}
                 />
             </div>
-            <div className="absolute top-2 left-2">
-                <BlendControl value={blend} onChange={setBlend} />
-                <ViewControls value={mode} onChange={setMode} />
-            </div>
-            {mode === 'Single' ? (
+            <ViewControls className="absolute top-2 left-2" value={mode} onChange={setMode} />
+            {mode === 'single' ? (
                 <LightControls
                     firstName={first.name}
                     secondName={second.name}
@@ -61,7 +56,6 @@ export const Controls = ({first, second}: ControlsProps) => {
                     Swap order
                 </Button>
             )}
-
             <Zoom onZoomIn={() => setScale(scale + 0.1)} onZoomOut={() => setScale(scale - 0.1)} />
         </div>
     );

@@ -1,28 +1,9 @@
 'use client';
 
-import Blend from '@/icons/blend';
-import ImageSquare from '@/icons/image-square';
-import Split from '@/icons/split';
-import {Option, Select, SelectProps} from '@/ui/select';
+import {MODE_OPTIONS} from '@/const';
+import {Select, SelectProps} from '@/ui/select';
 
+/** Allows the selection of viewing mode of the images */
 export const ViewControls = ({...props}: Omit<SelectProps, 'options'>) => {
-    const options: Option[] = [
-        {
-            label: 'Single',
-            value: 'Single',
-            icon: <ImageSquare />,
-        },
-        {
-            label: 'Blend',
-            value: 'Blend',
-            icon: <Blend />,
-        },
-        {
-            label: 'Split',
-            value: 'Split',
-            icon: <Split />,
-        },
-    ];
-
-    return <Select {...props} options={options} />;
+    return <Select {...props} options={MODE_OPTIONS} />;
 };

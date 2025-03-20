@@ -3,10 +3,13 @@ import {Library} from '@/types';
 import {LinkItem} from '@/ui/link-item';
 
 interface SidebarProps {
+    /** Resource library */
     library: Library;
+    /** On close sidebar handler */
     closeSidebar?: () => void;
 }
 
+/** Provides a list of library items allowing the user to navigate to the specific folder */
 export const Sidebar = ({library, closeSidebar}: SidebarProps) => {
     return (
         <aside className="bg-surface flex h-screen w-60 flex-col divide-y divide-white/8">
