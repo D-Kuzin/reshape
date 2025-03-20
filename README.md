@@ -1,3 +1,5 @@
+# Introduction
+
 This is the submission of the Frontend Challenge as part of the second round of interview at Reshape Biotech.
 
 The challenge is provided as part of the following repository: [https://github.com/reshapebiotech/hiring/blob/main/frontend/README.md](https://github.com/reshapebiotech/hiring/blob/main/frontend/README.md)
