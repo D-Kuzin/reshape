@@ -10,9 +10,9 @@ It is recommended to run the command
 nvm use
 ```
 
-in order to ensure same versioning of node as there was used for this challenge. If nvm is not used, please make sure a suitable version of Node is installed.
+In order to ensure same versioning of node as used for this challenge. If nvm is not used, please make sure a suitable version of Node is installed.
 
-Depending on your package manager install the packages and then run the development server using on of the following:
+Depending on your package manager install the packages and then run the development server using one of the following:
 
 ```bash
 npm run dev
@@ -29,3 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Release
 
 This project has also been released on [https://reshape.kuzin.dk](https://reshape.kuzin.dk)
+
+## Assumptions
+
+TODO:
