@@ -20,7 +20,6 @@ interface ControlsProps {
 
 export const Controls = ({first, second}: ControlsProps) => {
     const [mode, setMode] = useState<Mode>(MODES[0]);
-    const [blend, setBlend] = useState<Mode>('70');
     const [perspective, setPerspective] = useState(second.name);
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
