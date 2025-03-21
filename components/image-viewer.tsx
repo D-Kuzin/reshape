@@ -14,10 +14,19 @@ interface ImageViewerProps {
     perspective: string;
     /** Swap placement between the images */
     swapped: boolean;
+    /** Brigness value from controls */
+    brightness: string;
 }
 
 /** Combines the different views */
-export const ImageViewer = ({swapped, perspective, mode, first, second}: ImageViewerProps) => {
+export const ImageViewer = ({
+    swapped,
+    perspective,
+    mode,
+    first,
+    second,
+    brightness,
+}: ImageViewerProps) => {
     switch (mode) {
         default:
         case 'single':
@@ -45,5 +54,14 @@ export const ImageViewer = ({swapped, perspective, mode, first, second}: ImageVi
             );
         case 'split':
             return <SplitMode left={swapped ? first : second} right={swapped ? second : first} />;
+        case 'brightness':
+            return (
+                <img
+                    className="max-h-full max-w-full rounded-md object-contain"
+                    src={perspective === second.name ? second.download_url : first.download_url}
+                    style={{filter: `brightness(${brightness}%)`}}
+                    alt=""
+                />
+            );
     }
 };

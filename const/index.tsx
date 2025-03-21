@@ -23,6 +23,11 @@ export const MODE_OPTIONS = [
         value: 'split',
         icon: <Split />,
     },
+    {
+        label: 'Brightness',
+        value: 'brightness',
+        icon: <Split />,
+    },
 ];
 
 export const MODES = MODE_OPTIONS.map(option => option.value);

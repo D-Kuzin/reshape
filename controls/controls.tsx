@@ -10,6 +10,7 @@ import {Button} from '@/ui/button';
 import {LightControls} from './light-controls';
 import {ViewControls} from './view-select';
 import {Zoom} from './zoom';
+import {BrightnessControls} from './brightness-controls';
 
 interface ControlsProps {
     /** First image resource */
@@ -21,6 +22,7 @@ interface ControlsProps {
 export const Controls = ({first, second}: ControlsProps) => {
     const [mode, setMode] = useState<Mode>(MODES[0]);
     const [perspective, setPerspective] = useState(second.name);
+    const [brightness, setBrightness] = useState('100');
     const [isSwapped, setIsSwapped] = useState(false);
     const [scale, setScale] = useState(1.0);
 
@@ -34,18 +36,24 @@ export const Controls = ({first, second}: ControlsProps) => {
                     swapped={isSwapped}
                     mode={mode}
                     perspective={perspective}
+                    brightness={brightness}
                     first={first}
                     second={second}
                 />
             </div>
             <ViewControls className="absolute top-2 left-2" value={mode} onChange={setMode} />
-            {mode === 'single' ? (
-                <LightControls
-                    firstName={first.name}
-                    secondName={second.name}
-                    value={perspective}
-                    onChange={setPerspective}
-                />
+            {mode === 'single' || mode === 'brightness' ? (
+                <div className="absolute top-2 right-2 items-center space-x-2">
+                    <LightControls
+                        firstName={first.name}
+                        secondName={second.name}
+                        value={perspective}
+                        onChange={setPerspective}
+                    />
+                    {mode === 'brightness' && (
+                        <BrightnessControls value={brightness} onChange={setBrightness} />
+                    )}
+                </div>
             ) : (
                 <Button
                     onClick={() => setIsSwapped(!isSwapped)}

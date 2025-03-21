@@ -13,7 +13,6 @@ export const LightControls = ({firstName, secondName, ...props}: LightControlsPr
     return (
         <Select
             {...props}
-            className="absolute top-2 right-2"
             options={[
                 {
                     value: secondName,

@@ -29,7 +29,7 @@ async function getLibrary(): Promise<Library> {
             next: {revalidate: 3600},
         });
 
-        if (!res.ok) throw new Error('Failed to fetch images');
+        if (!res.ok) throw new Error('Failed to fetch folders');
 
         const data: {name: string; type: string}[] = await res.json();
 
@@ -37,7 +37,7 @@ async function getLibrary(): Promise<Library> {
             .filter(item => item.type === 'dir')
             .map(item => ({name: item.name, slug: encodeURIComponent(item.name)}));
     } catch (error) {
-        console.error('Error fetching images:', error);
+        console.error('Error fetching folders:', error);
         return [];
     }
 }
