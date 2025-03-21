@@ -1,5 +1,6 @@
 import Blend from '@/icons/blend';
 import ImageSquare from '@/icons/image-square';
+import Light from '@/icons/light';
 import Split from '@/icons/split';
 
 export const GITHUB_REPO = 'reshapebiotech/hiring';
@@ -26,7 +27,7 @@ export const MODE_OPTIONS = [
     {
         label: 'Brightness',
         value: 'brightness',
-        icon: <Split />,
+        icon: <Light />,
     },
 ];
 
