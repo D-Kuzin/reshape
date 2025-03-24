@@ -27,9 +27,9 @@ export const Controls = ({first, second}: ControlsProps) => {
     const [scale, setScale] = useState(1.0);
 
     return (
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full overflow-hidden">
             <div
-                className="flex h-screen w-full flex-col items-center justify-center overflow-hidden p-2"
+                className="flex h-screen w-full flex-col items-center justify-center p-2"
                 style={{transform: `scale(${scale})`}}
             >
                 <ImageViewer
