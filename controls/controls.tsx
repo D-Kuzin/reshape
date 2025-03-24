@@ -29,7 +29,7 @@ export const Controls = ({first, second}: ControlsProps) => {
     return (
         <div className="relative h-full w-full">
             <div
-                className="flex h-full w-full items-center justify-around"
+                className="flex h-screen w-full flex-col items-center justify-center overflow-hidden p-2"
                 style={{transform: `scale(${scale})`}}
             >
                 <ImageViewer
@@ -41,9 +41,9 @@ export const Controls = ({first, second}: ControlsProps) => {
                     second={second}
                 />
             </div>
-            <ViewControls className="absolute top-2 left-2" value={mode} onChange={setMode} />
+            <ViewControls className="absolute top-4 left-4" value={mode} onChange={setMode} />
             {mode === 'single' || mode === 'brightness' ? (
-                <div className="absolute top-2 right-2 items-center space-x-2">
+                <div className="absolute top-4 right-4 items-center space-x-2">
                     <LightControls
                         firstName={first.name}
                         secondName={second.name}
@@ -57,7 +57,7 @@ export const Controls = ({first, second}: ControlsProps) => {
             ) : (
                 <Button
                     onClick={() => setIsSwapped(!isSwapped)}
-                    className="absolute top-2 right-2 fill-white text-white"
+                    className="absolute top-4 right-4 fill-white text-white"
                 >
                     <Swap />
                     Swap order

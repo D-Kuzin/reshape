@@ -25,9 +25,5 @@ export default async function Folder({params}: {params: Promise<{folder: string}
     const {folder} = await params;
     const [first, second] = await fetchGitHubImages(folder);
 
-    return (
-        <div className="flex h-full flex-1 items-center justify-center overflow-hidden p-2">
-            <Controls first={first} second={second} />
-        </div>
-    );
+    return <Controls first={first} second={second} />;
 }

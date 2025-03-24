@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import SplitMode from './split-mode';
@@ -39,18 +40,18 @@ export const ImageViewer = ({
             );
         case 'blend':
             return (
-                <>
+                <div className="relative max-h-full max-w-full">
                     <img
                         src={swapped ? first.download_url : second.download_url}
                         alt="before"
                         className="max-h-full max-w-full rounded-md object-contain"
                     />
                     <img
-                        className="absolute max-h-full max-w-full rounded-md object-contain opacity-70"
+                        className="absolute inset-0 max-h-full max-w-full rounded-md object-contain opacity-70"
                         src={swapped ? second.download_url : first.download_url}
                         alt="after"
                     />
-                </>
+                </div>
             );
         case 'split':
             return <SplitMode left={swapped ? first : second} right={swapped ? second : first} />;
