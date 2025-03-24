@@ -42,8 +42,8 @@ Following assumptions has been done when developing the platform:
 
 ## Blend mode clarification
 
-The blend mode has been chosen to follow a opacity 70/30 split between the two images. The reason being that 50/50 wouldn't favor the swap order functionality, and that a 100/0 would just be a single view. Hence 70/30 would be the down the middle approach, to allow other functionalities to still bring
+The blend mode has been chosen to follow a opacity 70/30 split between the two images. The reason being that 50/50 wouldn't favor the swap order functionality, and that a 100/0 would just be a single view. Hence 70/30 would be the down the middle approach, to allow other functionalities to still bring value
 
 ## Choose your own adventure
 
-A fourth view mode has been added that allows the user to modify the brightness of the image in a single view mode. The brightness can be adjusted in an increment of 10%
+A fourth view mode has been added that allows the user to modify the brightness of the image in a single view mode. The brightness can be adjusted in an increment of 20%
